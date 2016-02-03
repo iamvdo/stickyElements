@@ -81,12 +81,20 @@ const stickyElements = (() => {
     }
 
     onMouseLeave () {
+      // prevent mouseleave event to be triggered twice by 30ms
+      if (this.lastGripped) {
+        const now = new Date().getTime();
+        if (now - this.lastGripped < 30) {
+          return;
+        }
+      }
       const element = this.el;
       animate.stop(element);
 
       const {posx, posy} = this.getPositions(this.positions.deltax, this.positions.deltay);
 
       if (this.isGripped) {
+        this.lastGripped = new Date().getTime();
         animate({
           el: element,
           translateX: [posx, 0],
