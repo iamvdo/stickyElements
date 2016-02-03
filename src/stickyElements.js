@@ -19,10 +19,22 @@ const stickyElements = (() => {
   class StickyElement {
     constructor (el, opts = {}) {
       this.el = el;
-      el.addEventListener('mouseenter', ( ) => this.onMouseEnter(), false);
-      el.addEventListener('mouseleave', ( ) => this.onMouseLeave(), false);
-      el.addEventListener('mousemove',  (e) => this.onMouseMove(e), false);
       this.setOpts(opts);
+      // prevent events to be registered multiple times
+      if (el._stickyEvents) {
+        el.removeEventListener('mouseenter', el._stickyEvents.mouseEnter, false);
+        el.removeEventListener('mouseleave', el._stickyEvents.mouseLeave, false);
+        el.removeEventListener('mousemove',  el._stickyEvents.mouseMove, false);
+        el._stickyEvents = undefined;
+      }
+      el._stickyEvents = {
+        mouseEnter: ( ) => this.onMouseEnter(),
+        mouseLeave: ( ) => this.onMouseLeave(),
+        mouseMove:  (e) => this.onMouseMove(e)
+      }
+      el.addEventListener('mouseenter', el._stickyEvents.mouseEnter, false);
+      el.addEventListener('mouseleave', el._stickyEvents.mouseLeave, false);
+      el.addEventListener('mousemove',  el._stickyEvents.mouseMove, false);
     }
 
     setOpts (opts) {
