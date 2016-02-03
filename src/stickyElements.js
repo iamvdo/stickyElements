@@ -63,30 +63,34 @@ const stickyElements = (() => {
     }
 
     getPositions (deltax, deltay) {
-      var posx = isFinite(deltax / this.stickiness.x) ? deltax / this.stickiness.x : 0;
-      var posy = isFinite(deltay / this.stickiness.y) ? deltay / this.stickiness.y : 0;
-      return {x: posx, y: posy};
+      //console.log(this.stickiness);
+      const posx = (this.stickiness.x !== 0) ? deltax / this.stickiness.x : 0;
+      const posy = (this.stickiness.y !== 0) ? deltay / this.stickiness.y : 0;
+      return {posx, posy};
     }
 
     onMouseEnter () {
-      const button = this.el;
-      this.positions = {
-        centerx: button.offsetLeft + (button.offsetWidth / 2),
-        centery: button.offsetTop + (button.offsetHeight / 2) - document.documentElement.scrollTop
+      const {offsetWidth, offsetHeight, offsetLeft, offsetTop} = this.el;
+      const positions = {
+        width: offsetWidth,
+        height: offsetHeight,
+        centerx: offsetLeft + (offsetWidth / 2),
+        centery: offsetTop + (offsetHeight / 2) - document.documentElement.scrollTop
       };
+      this.positions = positions;
     }
 
     onMouseLeave () {
-      const button = this.el;
-      animate.stop(button);
+      const element = this.el;
+      animate.stop(element);
 
-      const pos = this.getPositions(this.positions.deltax, this.positions.deltay);
+      const {posx, posy} = this.getPositions(this.positions.deltax, this.positions.deltay);
 
       if (this.isGripped) {
         animate({
-          el: button,
-          translateX: [pos.x, 0],
-          translateY: [pos.y, 0],
+          el: element,
+          translateX: [posx, 0],
+          translateY: [posy, 0],
           duration: 450
         });
       }
@@ -94,24 +98,24 @@ const stickyElements = (() => {
     }
 
     onMouseMove (event) {
-      const button = this.el;
-      animate.stop(button);
+      const element = this.el;
+      animate.stop(element);
 
       this.positions.deltax = -(this.positions.centerx - event.clientX);
       this.positions.deltay = -(this.positions.centery - event.clientY);
 
       const isGrip = {
-        x: Math.abs(this.positions.deltax) < (button.offsetWidth /  this.grip.x),
-        y: Math.abs(this.positions.deltay) < (button.offsetHeight / this.grip.y)
+        x: Math.abs(this.positions.deltax) < (this.positions.width /  this.grip.x),
+        y: Math.abs(this.positions.deltay) < (this.positions.height / this.grip.y)
       };
 
       if (isGrip.x && isGrip.y) {
         this.isGripped = true;
-      };
+      }
 
       if (this.isGripped) {
-        const pos = this.getPositions(this.positions.deltax, this.positions.deltay);
-        button.style.transform = 'translate(' + pos.x + 'px, ' + pos.y + 'px)';
+        const {posx, posy} = this.getPositions(this.positions.deltax, this.positions.deltay);
+        element.style.transform = 'translate3d(' + posx + 'px, ' + posy + 'px, 0)';
       }
     }
   }
