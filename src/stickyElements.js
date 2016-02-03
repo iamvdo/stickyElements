@@ -89,8 +89,6 @@ const stickyElements = (() => {
           translateY: [pos.y, 0],
           duration: 450
         });
-        button.style.position = 'static';
-        button.style.zIndex = 'auto';
       }
       this.isGripped = false;
     }
@@ -114,8 +112,6 @@ const stickyElements = (() => {
       if (this.isGripped) {
         const pos = this.getPositions(this.positions.deltax, this.positions.deltay);
         button.style.transform = 'translate(' + pos.x + 'px, ' + pos.y + 'px)';
-        button.style.position = 'relative';
-        button.style.zIndex = 1;
       }
     }
   }
