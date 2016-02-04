@@ -1,6 +1,8 @@
 var fs = require('fs');
-var babel = require('babel-core');
-var uglify = require("uglify-js");
+var babel  = require('rollup-plugin-babel');
+var rollup = require('rollup');
+var uglify = require('uglify-js');
+
 
 var args = process.argv;
 var packageFile = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -31,21 +33,27 @@ function addComment (code) {
 ` + code;
 }
 
-fs.mkdir('./dist', function (err) {
-  babel.transformFile(files.src, {presets: 'es2015'}, function (err, lib) {
-    fs.writeFile(files.dist, addComment(lib.code), 'utf8');
-    fs.writeFile(files.distMin, minify(lib.code), 'utf8');
-    fs.readFile(files.srcAnimateMin, 'utf8', function (err, animate) {
-      fs.writeFile(files.distAnimateMin, minify(animate + lib.code), 'utf8');
+function runBuild () {
+  fs.mkdir('./dist', (err) => {
+    rollup.rollup({
+      entry: files.src,
+      plugins: [ babel({presets: [ 'es2015-rollup' ]}) ]
+    }).then(function (bundle) {
+      var result = bundle.generate({
+        format: 'iife',
+        moduleName: 'stickyElements'
+      });
+      fs.writeFile(files.dist, addComment(result.code), 'utf8');
+      fs.writeFile(files.distMin, minify(result.code), 'utf8');
+      fs.readFile(files.srcAnimateMin, 'utf8', (err, animate) => {
+        fs.writeFile(files.distAnimateMin, minify(animate + result.code), 'utf8');
+      });
+    }, function (err) {
+      console.log(err);
     });
   });
-});
-
-
-
-if (args[2] && args[2] === '--no-animate') {
-  
 }
 
+runBuild();
 
 
