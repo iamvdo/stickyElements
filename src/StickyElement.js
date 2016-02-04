@@ -23,7 +23,7 @@ export default class StickyElement {
   setOpts (opts) {
     this.positions = {};
     this.isGripped = false;
-    this.stickiness = {x: 3, y: 3};
+    this.stickiness = {};
     this.grip = {x: 4, y: 4};
     this.setStickiness(opts);
   }
@@ -42,20 +42,21 @@ export default class StickyElement {
       10: 1.2,
       0:  0.0
     };
-    if (typeof opts.stickiness === "number") {
-      opts.stickiness = {x: opts.stickiness, y: opts.stickiness};
+    let opt = {stickiness: {x: 3, y: 3}};
+    // if no options specified
+    if (opts.stickiness || opts.stickiness === 0) {
+      if (typeof opts.stickiness === "number") {
+        opt.stickiness = {x: opts.stickiness, y: opts.stickiness};
+      }
+      if (opts.stickiness.x || opts.stickiness.x === 0) {
+        opt.stickiness.x = opts.stickiness.x;
+      }
+      if (opts.stickiness.y || opts.stickiness.y === 0) {
+        opt.stickiness.y = opts.stickiness.y;
+      }
     }
-    if (!opts.stickiness) {
-      opts.stickiness = this.stickiness;
-    };
-    if (opts.stickiness && !opts.stickiness.x && opts.stickiness.x !== 0) {
-      opts.stickiness.x = this.stickiness.x;
-    };
-    if (opts.stickiness && !opts.stickiness.y && opts.stickiness.y !== 0) {
-      opts.stickiness.y = this.stickiness.y;
-    };
-    this.stickiness.x = forces[Math.min(10, opts.stickiness.x)];
-    this.stickiness.y = forces[Math.min(10, opts.stickiness.y)];
+    this.stickiness.x = forces[Math.min(10, opt.stickiness.x)];
+    this.stickiness.y = forces[Math.min(10, opt.stickiness.y)];
   }
 
   getPositions (deltax, deltay) {

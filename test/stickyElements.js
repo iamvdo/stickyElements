@@ -29,6 +29,13 @@ describe('stickyElements', function() {
         expect(stickiness).to.eql({x: 4.5, y: 4.5});
       };
     });
+    it('should set default options to multiple elements with options', function () {
+      var se = stickyElements('.multiple', {});
+      for (var i = 0; i < se.length; i++) {
+        var stickiness = se[i].stickiness;
+        expect(stickiness).to.eql({x: 4.5, y: 4.5});
+      };
+    });
     it('should overidde options', function () {
       var se = stickyElements('.mocha', {stickiness: {x: 2, y: 4}});
       var stickiness = se[0].stickiness;
@@ -53,12 +60,14 @@ describe('stickyElements', function() {
       var se = stickyElements('.mocha', {stickiness: 0});
       var stickiness = se[0].stickiness;
       expect(stickiness).to.eql({x: 0.0, y: 0.0});
-      // only X
-      se = stickyElements('.mocha', {stickiness: {x: 0}});
+    });
+    it('should accept 0, only X', function () {
+      var se = stickyElements('.mocha', {stickiness: {x: 0}});
       var stickiness = se[0].stickiness;
       expect(stickiness).to.eql({x: 0.0, y: 4.5});
-      // only Y
-      se = stickyElements('.mocha', {stickiness: {y: 0}});
+    });
+    it('should accept 0, only Y', function () {
+      var se = stickyElements('.mocha', {stickiness: {y: 0}});
       var stickiness = se[0].stickiness;
       expect(stickiness).to.eql({x: 4.5, y: 0.0});
     });
