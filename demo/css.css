@@ -158,10 +158,15 @@ a {
     margin-top: 0;
   }
 }
+.options h2 {
+  margin-bottom: 0;
+}
 .options p {
+  margin-top: 0;
   text-align: left;
-  color: #aaa;
-  opacity: .9;
+  color: rgba(255,255,255,0.7);
+  text-shadow: none;
+  font-size: .8em;
 }
 .options-inner {
   color: #FFF;
