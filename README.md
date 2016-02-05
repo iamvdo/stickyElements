@@ -1,3 +1,3 @@
 # Sticky Elements
 
-Sticky everywhere
+Everything sticks. Just because.

@@ -1,8 +1,8 @@
 {
   "name": "stickyelements",
-  "version": "1.0.0",
-  "description": "Sticky everywhere",
-  "main": "dist/stickyElements-animate.min.js",
+  "version": "2.0.0",
+  "description": "Everything sticks. Just because.",
+  "main": "dist/stickyelements-animate.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/iamvdo/stickyElements.git"
