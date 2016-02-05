@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Elements</title>
+  <link rel="stylesheet" href="css.css">
+  <script>
+    WebFontConfig = {
+      google: {
+        families: ['Catamaran:300,600']
+      }
+    };
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+    })(document);
+  </script>
+</head>
+<body>
+  <div class="Container-parent">
+    <div class="Container">
+      <div class="Container-content">
+        <h1><span>Sticky</span> Elements</h1>
+        <p>Every element can stick, just because.</p>
+        <div class="buttons">
+          <button class="button button--secondary">Oh, my !</button>
+          <button class="button button--primary">Sticky buttons</button>
+        </div>
+        <p>Also, <a class="first" href="#">sticky links</a>. Created by <a href="http://twitter.com/iamvdo">@iamvdo</a>. Improve code on <a href="http://github.com/iamvdo">Github</a></p>
+      </div>
+      <div class="Container-footer options">
+        <div class="options-inner">
+          <h2>Control</h2>
+          <p>Play with controls to adjust buttons' stickiness</p>
+          <div class="inputs">
+            <div class="input">
+              <label for="inputX">Horizontally</label>
+              <input id="inputX" type="range" min="0" max="10" step="0.1">
+            </div>
+            <div class="input">
+              <label for="inputY">Vertically</label>
+              <input id="inputY" type="range" min="0" max="10" step="0.1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../dist/stickyelements-animate.js"></script>
+      <script src="ui.js"></script>
+    </div>
+  </div>
+</body>
+</html>
