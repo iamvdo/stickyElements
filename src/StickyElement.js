@@ -25,6 +25,7 @@ export default class StickyElement {
     this.isGripped = false;
     this.stickiness = {};
     this.grip = {x: 4, y: 4};
+    this.duration = opts.duration || 450;
     this.setStickiness(opts);
   }
 
@@ -95,7 +96,7 @@ export default class StickyElement {
         el: element,
         translateX: [posx, 0],
         translateY: [posy, 0],
-        duration: 450
+        duration: this.duration
       });
     }
     this.isGripped = false;
