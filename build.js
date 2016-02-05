@@ -9,28 +9,14 @@ var packageFile = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 var version = packageFile.version;
 
 var files = {
-  src:            './src/stickyElements.js',
-  srcAnimate:     './node_modules/animateplus/animate.js',
-  srcAnimateMin:  './node_modules/animateplus/animate.min.js',
-  dist:           './dist/stickyElements.js',
-  distMin:        './dist/stickyElements.min.js',
-  distAnimateMin: './dist/stickyElements-animate.min.js'
+  src:         './src/stickyElements.js',
+  srcAnimate:  './node_modules/animateplus/animate.min.js',
+  dist:        './dist/stickyelements.js',
+  distAnimate: './dist/stickyelements-animate.js'
 }
 
 function minify (code) {
   return uglify.minify(code, {fromString: true}).code;
-}
-
-function addComment (code) {
-  return `/*
- * StickyElements v${version}
- * http://github.com/iamvdo/stickyElements
- *
- * Copyright (c) Vincent De Oliveira
- * Released under the MIT license
- */
-
-` + code;
 }
 
 function runBuild () {
@@ -43,10 +29,10 @@ function runBuild () {
         format: 'iife',
         moduleName: 'stickyElements'
       });
-      fs.writeFile(files.dist, addComment(result.code), 'utf8');
-      fs.writeFile(files.distMin, minify(result.code), 'utf8');
-      fs.readFile(files.srcAnimateMin, 'utf8', (err, animate) => {
-        fs.writeFile(files.distAnimateMin, minify(animate + result.code), 'utf8');
+      var code = minify(result.code);
+      fs.writeFile(files.dist, code, 'utf8');
+      fs.readFile(files.srcAnimate, 'utf8', (err, animate) => {
+        fs.writeFile(files.distAnimate, animate + code, 'utf8');
       });
     }, function (err) {
       console.log(err);
