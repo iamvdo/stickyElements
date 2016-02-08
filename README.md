@@ -2,7 +2,7 @@
 
 Everything can stick. Just because.
 
-[Demo](https://design.iamvdo.me/stickyElements)
+[Demo](http://design.iamvdo.me/stickyElements)
 
 ## Getting started
 
