@@ -4,6 +4,11 @@
 html {
   background: #222;
 }
+@media (max-width: 500px) {
+  html {
+    font-size: .9em;
+  }
+}
 
 @keyframes wheelHue {
   from, to { background-color: hsl(252, 65%, 60%); }
@@ -91,6 +96,7 @@ h2 {
 p {
   text-align: center;
   color: #fff;
+  margin: .5em .2em;
 }
 a {
   color: inherit;
@@ -101,6 +107,11 @@ a {
   padding: 3rem 0;
   display: flex;
   justify-content: center;
+}
+@media (max-width: 500px) {
+  .buttons {
+    flex-direction: column;
+  }
 }
 .button {
   display: flex;
@@ -151,6 +162,11 @@ a {
   background: linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,.55));
   text-shadow: 0 1px 2px rgba(0,0,0,.9);
 }
+@media (max-width: 500px) {
+  .options {
+    padding: 2rem .5rem;
+  }
+}
 @media (min-width: 1000px) {
   .options {
     padding: 6rem 2rem;
@@ -163,6 +179,7 @@ a {
 }
 .options p {
   margin-top: 0;
+  margin-left: 0;
   text-align: left;
   color: rgba(255,255,255,0.7);
   text-shadow: none;
@@ -174,15 +191,17 @@ a {
 .inputs {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
-@media (min-width: 1000px) {
+@media (min-width: 500px) and (max-width: 1000px) {
   .inputs {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 .input {
   margin: 1rem;
-  flex: 1 0 40%;
+  flex: 1 1 25%;
+  min-width: 180px;
 }
 @media (min-width: 1000px) {
   .input {
