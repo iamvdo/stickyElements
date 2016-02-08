@@ -120,6 +120,7 @@ a {
   text-decoration: none;
   text-align: center;
   margin: 20px;
+  font-family: inherit;
   font-size: 1.4em;
   font-weight: 600;
   padding: 1em 2em;
