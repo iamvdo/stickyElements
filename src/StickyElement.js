@@ -3,30 +3,46 @@ export default class StickyElement {
   constructor (el, opts = {}) {
     this.el = el;
     this.setOpts(opts);
-    // prevent events to be registered multiple times
-    if (el._stickyEvents) {
-      el.removeEventListener('mouseenter', el._stickyEvents.mouseEnter, false);
-      el.removeEventListener('mouseleave', el._stickyEvents.mouseLeave, false);
-      el.removeEventListener('mousemove',  el._stickyEvents.mouseMove, false);
-      el._stickyEvents = undefined;
-    }
-    el._stickyEvents = {
-      mouseEnter: ( ) => this.onMouseEnter(),
-      mouseLeave: ( ) => this.onMouseLeave(),
-      mouseMove:  (e) => this.onMouseMove(e)
-    }
-    el.addEventListener('mouseenter', el._stickyEvents.mouseEnter, false);
-    el.addEventListener('mouseleave', el._stickyEvents.mouseLeave, false);
-    el.addEventListener('mousemove',  el._stickyEvents.mouseMove, false);
+    this.setEvents();
   }
 
   setOpts (opts) {
+    this.pointer = opts.pointer;
     this.positions = {};
     this.isGripped = false;
     this.stickiness = {};
     this.grip = {x: 4, y: 4};
     this.duration = opts.duration || 450;
     this.setStickiness(opts);
+  }
+
+  setEvents () {
+    let el = this.el;
+    const events = ['enter', 'leave', 'move'];
+    // prevent events to be registered multiple times
+    if (el._stickyEvents) {
+      events.map(e => {
+        if (this.pointer) {
+          el.removeEventListener('pointer' + e, el._stickyEvents[e], false);
+        } else {
+          el.removeEventListener('mouse' + e, el._stickyEvents[e], false);
+        }
+      });
+      el._stickyEvents = undefined;
+    }
+    el._stickyEvents = {
+      enter: (e) => this.onEnter(e),
+      leave: (e) => this.onLeave(e),
+      move:  (e) => this.onMove(e)
+    };
+    
+    events.map(e => {
+      if (this.pointer) {
+        el.addEventListener('pointer' + e, el._stickyEvents[e], false);
+      } else {
+        el.addEventListener('mouse' + e, el._stickyEvents[e], false);
+      }
+    });
   }
 
   setStickiness (opts) {
@@ -66,7 +82,7 @@ export default class StickyElement {
     return {posx, posy};
   }
 
-  onMouseEnter () {
+  onEnter (event) {
     const {offsetWidth, offsetHeight, offsetLeft, offsetTop} = this.el;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const positions = {
@@ -78,7 +94,7 @@ export default class StickyElement {
     this.positions = positions;
   }
 
-  onMouseLeave () {
+  onLeave (event) {
     // prevent mouseleave event to be triggered twice by 30ms
     if (this.lastGripped) {
       const now = new Date().getTime();
@@ -103,12 +119,11 @@ export default class StickyElement {
     this.isGripped = false;
   }
 
-  onMouseMove (event) {
+  onMove (event) {
     const element = this.el;
     animate.stop(element);
 
-    this.positions.deltax = -(this.positions.centerx - event.clientX);
-    this.positions.deltay = -(this.positions.centery - event.clientY);
+    const {clientX, clientY} = event;
 
     const isGrip = {
       x: Math.abs(this.positions.deltax) < (this.positions.width /  this.grip.x),
@@ -118,6 +133,9 @@ export default class StickyElement {
     if (isGrip.x && isGrip.y) {
       this.isGripped = true;
     }
+
+    this.positions.deltax = -(this.positions.centerx - clientX);
+    this.positions.deltay = -(this.positions.centery - clientY);
 
     if (this.isGripped) {
       const {posx, posy} = this.getPositions(this.positions.deltax, this.positions.deltay);
