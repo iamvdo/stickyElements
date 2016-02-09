@@ -114,9 +114,7 @@ a {
   }
 }
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   text-decoration: none;
   text-align: center;
   margin: 20px;
@@ -199,6 +197,7 @@ a {
   margin: 1rem;
   flex: 1 1 25%;
   min-width: 180px;
+  min-height: 30px;
 }
 @media (min-width: 1000px) {
   .input {
@@ -281,7 +280,6 @@ input[type='range']::-ms-fill-lower {
   background-color: currentColor;
 }
 input[type='range']::-webkit-slider-thumb {
-  display: inline-block;
   margin-top: -0.25em;
   box-sizing: border-box;
   border: solid 0.125em rgba(0,0,0,.9);
