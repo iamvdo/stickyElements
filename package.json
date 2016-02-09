@@ -1,0 +1,12 @@
+{
+  "name": "stickyelements-demo",
+  "version": "1.0.0",
+  "description": "Sticky Elements demo",
+  "scripts": {
+    "css": "postcss --use autoprefixer ./src.css -o css.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.0",
+    "postcss-cli": "^2.4.0"
+  }
+}
