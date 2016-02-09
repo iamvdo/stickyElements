@@ -2,26 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tests</title>
-  <link rel="stylesheet" href="https://npmcdn.com/mocha@2.3.4/mocha.css">
+  <title>Live test</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  a, h1 span {
+    display: inline-block;
+  }
+  </style>
 </head>
 <body>
-  <div id="mocha"></div>
-  <a href="#" class="mocha" style="display:none">Mocha</a>
-  <a href="#" class="multiple" style="display:none">Mocha</a>
-  <a href="#" class="multiple" style="display:none">Mocha</a>
-  <script src="https://npmcdn.com/jquery@2.1.4/dist/jquery.min.js"></script>
-  <script src="https://npmcdn.com/expect.js@0.3.1/index.js"></script>
-  <script src="https://npmcdn.com/mocha@2.3.4/mocha.js"></script>
-
+  <h1><span>Sticky</span> Elements Playground</h1>
+  <p>This should be a <a href="#">sticky link</a>. And another <a href="http://twitter.com/iamvdo">one</a></p>
   <script src="../dist/stickyelements-animate.js"></script>
-
-  <script>mocha.setup('bdd')</script>
-  <script src="test.js"></script>
   <script>
-    mocha.checkLeaks();
-    mocha.globals(['jQuery']);
-    mocha.run();
+  stickyElements('a, button, h1 span');
   </script>
 </body>
 </html>
