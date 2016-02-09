@@ -25,5 +25,5 @@ stickyElements('.item', {
 
 ### Options
 
-* `stickiness` [Integer, Object]: How long elements remain stick to your mouse. If integer, apply same `x` and 'y' values. If object, can contain `x` and/or 'y' key. (Default: `3`)
-* `duration` [Integer]: Duration of animation (using [animateplus](https://github.com/bendc/animateplus). (Default: `450`)
+* `stickiness` [Integer, Object]: How long elements remain stick to your mouse. If integer, apply same `x` and `y` values. If object, can contain `x` and/or `y` key. Integer between 0 and 10. (Default: `3`)
+* `duration` [Integer]: Duration in milliseconds of animation (using [animateplus](https://github.com/bendc/animateplus). (Default: `450`)
