@@ -23,13 +23,13 @@
   <div class="Container-parent">
     <div class="Container">
       <div class="Container-content">
-        <h1><span>Sticky</span> Elements</h1>
+        <h1><span touch-action="none">Sticky</span> Elements</h1>
         <p>Everything can stick. Just because.</p>
         <div class="buttons">
-          <button class="button button--secondary">Oh, my !</button>
-          <button class="button button--primary">Sticky buttons</button>
+          <button class="button button--secondary" touch-action="none">Oh, my !</button>
+          <button class="button button--primary" touch-action="none">Sticky buttons</button>
         </div>
-        <p>Also, <a class="first" href="#">sticky links</a>. Created by <a href="http://twitter.com/iamvdo">@iamvdo</a>. Improve code on <a href="http://github.com/iamvdo/stickyElements">Github</a></p>
+        <p>Also, <a class="first" href="#" touch-action="none">sticky links</a>. Created by <a href="http://twitter.com/iamvdo" touch-action="none">@iamvdo</a>. Improve code on <a href="http://github.com/iamvdo/stickyElements" touch-action="none">Github</a></p>
         <p>More UI experiments on <a href="http://iamvdo.me/en/design">iamvdo.me/design</a></p>
       </div>
       <div class="Container-footer options">
@@ -43,7 +43,7 @@
             </div>
             <div class="input">
               <label for="inputY">Vertical stickiness</label>
-              <input id="inputY" type="range" min="0" max="10" step="0.1">
+              <input id="inputY" type="range" min="0" max="10" step="0.1" value="6">
             </div>
             <div class="input">
               <label for="inputDuration">Duration</label>
@@ -52,6 +52,7 @@
           </div>
         </div>
       </div>
+      <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
       <script src="dist/stickyelements-animate.js"></script>
       <script src="ui.js"></script>
       <script type="text/javascript">

@@ -11,53 +11,53 @@ html {
 }
 
 @-webkit-keyframes wheelHue {
-  from, to { background-color: hsl(252, 65%, 60%); }
-  10%      { background-color: hsl(288, 60%, 50%); }
-  20%      { background-color: hsl(324, 70%, 55%); }
-  30%      { background-color: hsl(360, 65%, 55%); }
-  40%      { background-color: hsl( 36, 80%, 55%); }
-  50%      { background-color: hsl( 72, 75%, 45%); }
-  60%      { background-color: hsl(108, 65%, 45%); }
-  70%      { background-color: hsl(144, 75%, 45%); }
-  80%      { background-color: hsl(180, 75%, 45%); }
-  90%      { background-color: hsl(216, 60%, 55%); }
+  from, to { background-color: hsl(324, 70%, 55%); }
+  10%      { background-color: hsl(360, 65%, 55%); }
+  20%      { background-color: hsl( 36, 80%, 55%); }
+  30%      { background-color: hsl( 72, 75%, 45%); }
+  40%      { background-color: hsl(108, 65%, 45%); }
+  50%      { background-color: hsl(144, 75%, 45%); }
+  60%      { background-color: hsl(180, 75%, 45%); }
+  70%      { background-color: hsl(216, 60%, 55%); }
+  80%      { background-color: hsl(252, 65%, 60%); }
+  90%      { background-color: hsl(288, 60%, 50%); }
 }
 
 @keyframes wheelHue {
-  from, to { background-color: hsl(252, 65%, 60%); }
-  10%      { background-color: hsl(288, 60%, 50%); }
-  20%      { background-color: hsl(324, 70%, 55%); }
-  30%      { background-color: hsl(360, 65%, 55%); }
-  40%      { background-color: hsl( 36, 80%, 55%); }
-  50%      { background-color: hsl( 72, 75%, 45%); }
-  60%      { background-color: hsl(108, 65%, 45%); }
-  70%      { background-color: hsl(144, 75%, 45%); }
-  80%      { background-color: hsl(180, 75%, 45%); }
-  90%      { background-color: hsl(216, 60%, 55%); }
+  from, to { background-color: hsl(324, 70%, 55%); }
+  10%      { background-color: hsl(360, 65%, 55%); }
+  20%      { background-color: hsl( 36, 80%, 55%); }
+  30%      { background-color: hsl( 72, 75%, 45%); }
+  40%      { background-color: hsl(108, 65%, 45%); }
+  50%      { background-color: hsl(144, 75%, 45%); }
+  60%      { background-color: hsl(180, 75%, 45%); }
+  70%      { background-color: hsl(216, 60%, 55%); }
+  80%      { background-color: hsl(252, 65%, 60%); }
+  90%      { background-color: hsl(288, 60%, 50%); }
 }
 @-webkit-keyframes wheelHueColor {
-  from, to { color: hsl(252, 65%, 50%); }
-  10%      { color: hsl(288, 60%, 40%); }
-  20%      { color: hsl(324, 70%, 45%); }
-  30%      { color: hsl(360, 65%, 45%); }
-  40%      { color: hsl( 36, 80%, 45%); }
-  50%      { color: hsl( 72, 75%, 35%); }
-  60%      { color: hsl(108, 65%, 35%); }
-  70%      { color: hsl(144, 75%, 35%); }
-  80%      { color: hsl(180, 75%, 35%); }
-  90%      { color: hsl(216, 60%, 45%); }
+  from, to { color: hsl(324, 70%, 45%); }
+  10%      { color: hsl(360, 65%, 45%); }
+  20%      { color: hsl( 36, 80%, 45%); }
+  30%      { color: hsl( 72, 75%, 35%); }
+  40%      { color: hsl(108, 65%, 35%); }
+  50%      { color: hsl(144, 75%, 35%); }
+  60%      { color: hsl(180, 75%, 35%); }
+  70%      { color: hsl(216, 60%, 45%); }
+  80%      { color: hsl(252, 65%, 50%); }
+  90%      { color: hsl(288, 60%, 40%); }
 }
 @keyframes wheelHueColor {
-  from, to { color: hsl(252, 65%, 50%); }
-  10%      { color: hsl(288, 60%, 40%); }
-  20%      { color: hsl(324, 70%, 45%); }
-  30%      { color: hsl(360, 65%, 45%); }
-  40%      { color: hsl( 36, 80%, 45%); }
-  50%      { color: hsl( 72, 75%, 35%); }
-  60%      { color: hsl(108, 65%, 35%); }
-  70%      { color: hsl(144, 75%, 35%); }
-  80%      { color: hsl(180, 75%, 35%); }
-  90%      { color: hsl(216, 60%, 45%); }
+  from, to { color: hsl(324, 70%, 45%); }
+  10%      { color: hsl(360, 65%, 45%); }
+  20%      { color: hsl( 36, 80%, 45%); }
+  30%      { color: hsl( 72, 75%, 35%); }
+  40%      { color: hsl(108, 65%, 35%); }
+  50%      { color: hsl(144, 75%, 35%); }
+  60%      { color: hsl(180, 75%, 35%); }
+  70%      { color: hsl(216, 60%, 45%); }
+  80%      { color: hsl(252, 65%, 50%); }
+  90%      { color: hsl(288, 60%, 40%); }
 }
 body {
   margin: 0;
@@ -80,15 +80,19 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
-  background-color: hsl(252, 65%, 60%);
-  -webkit-animation: wheelHue 100s infinite;
-          animation: wheelHue 100s infinite;
+  background-color: hsl(324, 70%, 55%);
+}
+@media (min-width: 1000px) {
+  .Container {
+    -webkit-animation: wheelHue 100s infinite;
+            animation: wheelHue 100s infinite;
+  }
 }
 @supports (background-blend-mode: overlay) {
   .Container {
     background-size: cover;
-    background-image: -webkit-linear-gradient(45deg, white 10%, black 90%);
-    background-image: linear-gradient(45deg, white 10%, black 90%);
+    background-image: -webkit-linear-gradient(bottom left, white 10%, black 90%);
+    background-image: linear-gradient(to top right, white 10%, black 90%);
     background-blend-mode: overlay;
   }
 }
@@ -184,9 +188,7 @@ a {
   font-weight: 600;
   padding: 1em 2em;
   /* text */
-  color: hsl(252, 65%, 50%);
-  -webkit-animation: wheelHueColor 100s infinite;
-          animation: wheelHueColor 100s infinite;
+  color: hsl(324, 70%, 45%);
   text-shadow: 0 1px 3px white;
   /* background */
   background: white;
@@ -199,7 +201,13 @@ a {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
 }
-.button:hover {
+@media (min-width: 1000px) {
+  .button {
+    -webkit-animation: wheelHueColor 100s infinite;
+            animation: wheelHueColor 100s infinite;
+  }
+}
+.button.is-sticky {
   position: relative;
   z-index: 1;
 }
@@ -301,8 +309,13 @@ input[type='range'] {
   font-size: 1em;
   cursor: pointer;
   outline: none;
-  -webkit-animation: wheelHueColor 100s infinite;
-          animation: wheelHueColor 100s infinite;
+  color: hsl(324, 70%, 45%);
+}
+@media (min-width: 1000px) {
+  input[type='range'] {
+    -webkit-animation: wheelHueColor 100s infinite;
+            animation: wheelHueColor 100s infinite;
+  }
 }
 input[type='range'],
 input[type='range']::-webkit-slider-runnable-track,

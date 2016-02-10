@@ -21,7 +21,8 @@ function updateOptions (input) {
       x: inputX,
       y: inputY
     },
-    duration: inputDuration
+    duration: inputDuration,
+    pointer: true
   });
 }
 
