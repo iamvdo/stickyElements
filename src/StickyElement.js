@@ -15,7 +15,7 @@ export default class StickyElement {
     this.positions = {};
     this.isGripped = false;
     this.stickiness = {};
-    this.grip = {x: 4, y: 4};
+    this.grip = {x: 3, y: 4};
     this.duration = opts.duration || 450;
     this.setStickiness(opts);
   }
