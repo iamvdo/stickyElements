@@ -172,10 +172,10 @@ a {
 @media (max-width: 500px) {
   .buttons {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
   }
 }
 .button {
@@ -223,6 +223,13 @@ a {
   border: 5px solid;
   -webkit-animation: none;
           animation: none;
+}
+@media (max-width: 500px) {
+  .button--secondary {
+    font-size: 1.2em;
+    margin: 20px 50px;
+    padding: 1em;
+  }
 }
 .options {
   padding: 2rem;

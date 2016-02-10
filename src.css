@@ -114,7 +114,7 @@ a {
 }
 @media (max-width: 500px) {
   .buttons {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 .button {
@@ -158,6 +158,13 @@ a {
   color: rgba(0,0,0,.5);
   border: 5px solid;
   animation: none;
+}
+@media (max-width: 500px) {
+  .button--secondary {
+    font-size: 1.2em;
+    margin: 20px 50px;
+    padding: 1em;
+  }
 }
 .options {
   padding: 2rem;
