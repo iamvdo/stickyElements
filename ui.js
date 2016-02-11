@@ -16,14 +16,17 @@ function updateOptions (input) {
   var inputX = Math.ceil(document.getElementById('inputX').value);
   var inputY = Math.ceil(document.getElementById('inputY').value);
   var inputDuration = document.getElementById('inputDuration').value;
-  stickyElements('.button, a, h1 span', {
+  var opts = {
     stickiness: {
       x: inputX,
       y: inputY
     },
-    duration: inputDuration,
-    pointer: true
-  });
+    duration: inputDuration
+  };
+  if ('ontouchstart' in window) {
+    opts.pointer = true;
+  }
+  stickyElements('.button, a, h1 span', opts);
 }
 
 function updateTrack (input) {
