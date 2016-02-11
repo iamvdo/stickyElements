@@ -207,6 +207,7 @@ a {
             animation: wheelHueColor 100s infinite;
   }
 }
+.button:hover,
 .button.is-sticky {
   position: relative;
   z-index: 1;
