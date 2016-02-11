@@ -6,10 +6,6 @@ export default class StickyElement {
     this.setEvents();
   }
 
-  toggleStickyClass () {
-    this.el.classList.toggle('is-sticky');
-  }
-
   setOpts (opts) {
     this.pointer = opts.pointer;
     this.positions = {};
@@ -96,7 +92,6 @@ export default class StickyElement {
       centery: offsetTop + (offsetHeight / 2) - scrollTop
     };
     this.positions = positions;
-    this.toggleStickyClass();
   }
 
   onLeave (event) {
@@ -118,13 +113,8 @@ export default class StickyElement {
         el: element,
         translateX: [posx, 0],
         translateY: [posy, 0],
-        duration: this.duration,
-        complete: () => {
-          this.toggleStickyClass();
-        }
+        duration: this.duration
       });
-    } else {
-      this.toggleStickyClass();
     }
     this.isGripped = false;
   }
