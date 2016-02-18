@@ -34,6 +34,8 @@ function runBuild () {
       fs.readFile(files.srcAnimate, 'utf8', (err, animate) => {
         fs.writeFile(files.distAnimate, animate + code, 'utf8');
       });
+    }).then(function () {
+      console.log('[', new Date().toGMTString(), ']', 'Builded');
     }, function (err) {
       console.log(err);
     });
