@@ -46,5 +46,6 @@ runBuild();
 
 if (args[2] && args[2] === '-w') {
   fs.watchFile(files.src, runBuild);
+  fs.watchFile('./src/animate.js', runBuild);
   fs.watchFile('./src/StickyElement.js', runBuild);
 }

@@ -1,3 +1,5 @@
+import animate from './animate';
+
 export default class StickyElement {
 
   constructor (el, opts = {}) {
@@ -101,13 +103,17 @@ export default class StickyElement {
     if (this.state === 'MOVE') {
       this.state = 'LEAVE';
       const element = this.el;
-      const {x, y} = this.getTranslate(element);
+      //const {x, y} = this.getTranslate(element);
+      const {x, y} = element._stickyTransforms;
       animate.stop(element);
       animate({
         el: element,
         translateX: [x, 0],
         translateY: [y, 0],
-        duration: this.duration
+        duration: this.duration,
+        each: (progress) => {
+          element._stickyTransforms = {x: progress[0], y: progress[1]};
+        }
       });
       this.isGripped = false;
     }
@@ -131,6 +137,7 @@ export default class StickyElement {
 
     if (this.isGripped) {
       const {posx, posy} = this.getPositions();
+      element._stickyTransforms = {x: posx, y: posy};
       element.style.transform = 'translate3d(' + posx + 'px, ' + posy + 'px, 0)';
     }
   }

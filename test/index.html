@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" touch-action="none">
 <head>
   <meta charset="UTF-8">
   <title>Live test</title>
@@ -13,16 +13,88 @@
     font-size: 2em;
     touch-action: none;
   }
-  </style>
+  .wrap--narrow {
+    max-width: 65em;
+  }
+  .wrap {
+      width: 95%;
+      margin: 0 auto;
+      background: red;
+  }
+.underfooter {
+    color: rgba(0,0,0,.7);
+    font-size: .8em;
+    overflow: hidden;
+    padding: 1em 0;
+    text-shadow: none;
+}
+.u-left {
+    float: left;
+}
+li {
+  display: block;
+  float: left;
+    vertical-align: middle;
+    color: rgba(0,0,0,.5);
+    font-weight: 700;
+    margin: 0 .25em;
+    padding: 10px;
+    background: green;
+}
+.superlink a {
+    /* position: relative; */
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    background: blue;
+}
+.superlink a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+
+    -webkit-transform: scale(.5) translateY(10px);
+    -ms-transform: scale(.5) translateY(10px);
+    transform: scale(.5) translateY(10px);
+    background: rgba(255,255,255,0);
+    -webkit-transition: -webkit-transform .15s,background .15s;
+    transition: transform .15s,background .15s;
+}
+</style>
 </head>
 <body>
   <h1><span touch-action="none">Sticky</span> Elements Playground</h1>
   <p>This should be a <a href="#" touch-action="none">sticky link</a>. And another <a href="http://twitter.com/iamvdo">one</a></p>
   <button touch-action="none">Big Fat Touch Button</button>
-  <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
-  <script src="../dist/stickyelements-animate.js"></script>
+  <div touch-action="none" class="wrap wrap--narrow">
+    <div class="underfooter superlink">
+
+  <!-- PEP bug -->
+  <nav id="nav">
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Design</a></li>
+      <li><a href="#">Code</a></li>
+    </ul>
+  </nav>
+</div>
+  </div>
+  <!-- <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script> -->
+  <script src="https://cdn.rawgit.com/deltakosh/handjs/master/bin/hand.min.js"></script>
+  <script src="../dist/stickyelements.js"></script>
   <script>
-  stickyElements('a, button, h1 span', {stickiness: 5, pointer: true});
+  //stickyElements('li', {stickiness: 9, duration: 1000, pointer: true});
+
+  // Button
+  stickyElements('button', {stickiness: 9, duration: 10000});
+  // NAV
+  stickyElements('#nav li', {stickiness: 9, pointer: true});
   </script>
 </body>
 </html>
