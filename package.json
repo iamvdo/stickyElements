@@ -1,6 +1,6 @@
 {
   "name": "stickyelements",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Everything sticks. Just because.",
   "main": "dist/stickyelements-animate.js",
   "repository": {

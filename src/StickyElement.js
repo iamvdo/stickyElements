@@ -85,11 +85,22 @@ export default class StickyElement {
   onEnter (event) {
     const {offsetWidth, offsetHeight, offsetLeft, offsetTop} = this.el;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	
+	let parentOffsetLeft = 0;
+	let parentOffsetTop = 0;
+	
+	var elementParent = this.el.offsetParent;
+	while(elementParent) {
+		parentOffsetLeft += elementParent.offsetLeft;
+		parentOffsetTop += elementParent.offsetTop;
+		elementParent = elementParent.offsetParent;
+	}
+	
     const positions = {
       width: offsetWidth,
       height: offsetHeight,
-      centerx: offsetLeft + (offsetWidth / 2),
-      centery: offsetTop + (offsetHeight / 2) - scrollTop
+      centerx: parentOffsetLeft + offsetLeft + (offsetWidth / 2),
+      centery: parentOffsetTop + offsetTop + (offsetHeight / 2) - scrollTop
     };
     this.positions = positions;
   }
