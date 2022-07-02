@@ -6,15 +6,26 @@ Everything can stick. Just because.
 
 ## Getting started
 
-`npm install stickyelements` and insert `dist/stickyelements-animate.js` (or build your own bundle using `src` files)
+`npm install stickyelements` and insert `dist/stickyelements-animate.js` (or build your own bundle using `src` files) like so:
 
-Then, stick elements!
+```javascript
+import animate from "stickyelements/dist/stickyelements-animate.js";
+import stickyElements from "stickyelements/src/stickyElements.js";
 
+window.animate = animate
+stickyElements(".stick", {
+  stickiness: 3,
+  duration: 450,
+});
+```
+
+If you're not using npm and just including the `stickyelements-animate.js` by itself as it's own script you can just stick:
 ```javascript
 stickyElements('.item', {
   stickiness: 5,
   duration: 450
 });
+
 
 ```
 ## Arguments
